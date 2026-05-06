@@ -8,9 +8,4 @@ export const styles = StyleSheet.create({
   container: {
     padding: 16,
   },
-
-  row: {
-    justifyContent: 'space-between',
-    marginBottom: 12,
-  },
 });
