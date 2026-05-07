@@ -1,9 +1,9 @@
 import { ViewStyle } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import { LucideIcon } from 'lucide-react-native';
 
 export interface IconButtonProps {
-  Icon: React.FC<SvgProps>;
-  onPress: () => void;
+  Icon: LucideIcon;
+  onPress?: () => void;
   style?: ViewStyle;
   size?: number;
   color?: string;

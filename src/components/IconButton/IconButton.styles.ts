@@ -4,7 +4,7 @@ import { COLORS } from '../../constants/mainStyles';
 export const styles = StyleSheet.create({
   button: {
     padding: 7,
-    borderRadius: 8,
+    borderRadius: 50,
     backgroundColor: COLORS.primary,
     alignItems: 'center',
     justifyContent: 'center',

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export const CartScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> CartScreen </Text>
+      <Text style={styles.title}> Find your thing on the market </Text>
     </View>
   );
 };

@@ -1,10 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ProfileCard } from '../components';
 
 export const ProfileScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ProfileScreen</Text>
       <ProfileCard name="Mark Adam" email="Mark.Adam@gmail.com" />
     </View>
   );

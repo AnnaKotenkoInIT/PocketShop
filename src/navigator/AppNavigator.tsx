@@ -9,6 +9,7 @@ import { AboutUsScreen } from '../screens/AboutUsScreen.tsx';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
+// Natigation entry point
 export const AppNavigator = () => {
   return (
     <NavigationContainer>
@@ -17,16 +18,22 @@ export const AppNavigator = () => {
           name={ROUTES.MainTabs}
           component={MainTabs}
           options={{
-            title: 'Головна',
+            title: 'Main pages',
             headerShown: false,
           }}
         />
-        <Drawer.Screen name={ROUTES.AboutUsScreen} component={AboutUsScreen} />
+        <Drawer.Screen
+          name={ROUTES.AboutUsScreen}
+          component={AboutUsScreen}
+          options={{
+            title: 'About us',
+          }}
+        />
         <Drawer.Screen
           name={ROUTES.ContactsScreen}
           component={ContactsScreen}
           options={{
-            title: 'Контакти',
+            title: 'Contacts',
           }}
         />
       </Drawer.Navigator>

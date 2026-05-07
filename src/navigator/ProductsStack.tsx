@@ -8,7 +8,10 @@ const Stack = createStackNavigator<ProductsStackParamList>();
 
 export const ProductsStack = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.ProductsScreen}>
+    <Stack.Navigator
+      initialRouteName={ROUTES.ProductsScreen}
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name={ROUTES.ProductsScreen} component={ProductsScreen} />
 
       <Stack.Screen

@@ -7,7 +7,7 @@ export const IconButton = ({
   onPress,
   style,
   size = 20,
-  color = '#000',
+  color,
 }: IconButtonProps) => {
   return (
     <TouchableOpacity
@@ -16,7 +16,7 @@ export const IconButton = ({
       activeOpacity={0.7}
       accessibilityRole="button"
     >
-      <Icon width={size} height={size} fill={color} />
+      <Icon size={size} color={color} />
     </TouchableOpacity>
   );
 };

@@ -8,7 +8,12 @@ const Stack = createStackNavigator<CartStackParamList>();
 
 export const CartStack = () => {
   return (
-    <Stack.Navigator initialRouteName={ROUTES.CartScreen}>
+    <Stack.Navigator
+      initialRouteName={ROUTES.CartScreen}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={ROUTES.CartScreen} component={CartScreen} />
 
       <Stack.Screen

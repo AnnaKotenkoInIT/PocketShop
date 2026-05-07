@@ -1,9 +1,9 @@
 import { ViewStyle } from 'react-native';
 
 export interface ProductCardProps {
-  imageUrl: string;
+  id: number;
   title: string;
   price: number;
-  onAdd?: () => void;
+  imageUrl: string;
   style?: ViewStyle;
 }

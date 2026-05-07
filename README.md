@@ -1,6 +1,10 @@
 ![Homework 1 - Components](image.png)
 
-===========
+# ![Homework - 2 - Navigation, Tabs](image-1.png)
+
+![Homework - 2 - Navigation, Stack](image-2.png)
+
+![Homework - 2 - Navigation, Drawer](image-3.png)
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 

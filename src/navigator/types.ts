@@ -3,15 +3,19 @@ import type { NavigatorScreenParams } from '@react-navigation/native';
 export type ProductsStackParamList = {
   ProductsScreen: undefined; // screen
   ProductDetailsScreen: {
-    productId: number | undefined;
-    productName?: string;
+    productId: number;
   };
+};
+
+export type RootStackParamList = {
+  ProductsScreen: undefined;
+  ProductDetailsScreen: { productId: number };
 };
 
 export type CartStackParamList = {
   CartScreen: undefined; // screen
   CartDetailsScreen: {
-    OrderId: number | undefined;
+    OrderId: number;
   };
 };
 

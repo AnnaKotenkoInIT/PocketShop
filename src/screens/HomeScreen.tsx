@@ -3,7 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 export const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> HomeScreen </Text>
+      <Text style={styles.title}>
+        We will add interaction with Favourite section and Banners
+      </Text>
     </View>
   );
 };

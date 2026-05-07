@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export const ContactsScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ContactsScreen</Text>
+      <Text style={styles.title}>Soon we add our contacts</Text>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { ProductCard, SearchBar } from '../components';
 import { useState } from 'react';
 import { PRODUCTS_DATA } from '../store/products';
@@ -12,16 +12,15 @@ export const ProductsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ProductsScreen</Text>
       <SearchBar value={search} onChangeText={setSearch} />
       <FlatList
         data={filteredData}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         numColumns={2}
         columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.container}
-        ListHeaderComponent={<></>}
+        contentContainerStyle={styles.contentContainer}
         renderItem={({ item }) => <ProductCard {...item} />}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -30,16 +29,15 @@ export const ProductsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
+
+  contentContainer: {
+    paddingBottom: 24,
   },
+
   row: {
     justifyContent: 'space-between',
-    marginBottom: 12,
+    marginBottom: 16,
   },
 });
