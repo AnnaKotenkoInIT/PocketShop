@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { Banner } from '../components/Banner/Banner';
 
 export const HomeScreen = () => {
   return (
     <View style={styles.container}>
+      <Banner />
       <Text style={styles.title}>
-        We will add interaction with Favourite section and Banners
+        We will add interaction with Favourite section soon.
       </Text>
     </View>
   );
@@ -13,12 +15,12 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: '600',
+    textAlign: 'center',
   },
 });

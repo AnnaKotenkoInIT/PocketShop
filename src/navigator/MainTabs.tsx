@@ -1,84 +1,77 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { HomeScreen } from '../screens/HomeScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
 import { ProductsStack } from './ProductsStack';
+import { CartStack } from './CartStack';
+
 import { MainTabParamList } from './types';
-import { ROUTES } from '../constants/routes.ts';
-import { Pressable } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
-import { CartStack } from './CartStack.tsx';
-import { COLORS } from '../constants/mainStyles.ts';
-import {
-  Menu,
-  Home,
-  ShoppingBag,
-  User,
-  ShoppingCart,
-} from 'lucide-react-native';
+import { ROUTES } from '../constants/routes';
+import { COLORS } from '../constants/mainStyles';
+
+import { HeaderMenuButton } from '../components/HeaderMenuButton/HeaderMenuButton';
+
+import { Home, ShoppingBag, User, ShoppingCart } from 'lucide-react-native';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
+// header button
+const renderHeaderLeft = (navigation: any) => () =>
+  <HeaderMenuButton navigation={navigation} />;
+
+// tab icons
+const renderTabIcon = (routeName: string, color: string, size: number) => {
+  if (routeName === ROUTES.HomeScreen) {
+    return <Home size={size} color={color} />;
+  }
+
+  if (routeName === ROUTES.ProductsStack) {
+    return <ShoppingBag size={size} color={color} />;
+  }
+
+  if (routeName === ROUTES.CartStack) {
+    return <ShoppingCart size={size} color={color} />;
+  }
+
+  if (routeName === ROUTES.ProfileScreen) {
+    return <User size={size} color={color} />;
+  }
+
+  return null;
+};
+
+const getScreenOptions = ({ route, navigation }: any) => ({
+  headerTitleAlign: 'center' as const,
+  headerLeft: renderHeaderLeft(navigation),
+
+  tabBarIcon: ({ color, size }: any) => renderTabIcon(route.name, color, size),
+
+  tabBarActiveTintColor: COLORS.primary,
+  tabBarInactiveTintColor: COLORS.iconsColor,
+});
+
 export const MainTabs = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route, navigation }) => ({
-        headerTitleAlign: 'center',
-        headerLeft: () => (
-          <Pressable
-            onPress={() =>
-              navigation.getParent()?.dispatch(DrawerActions.openDrawer())
-            }
-            style={{ paddingHorizontal: 12 }}
-            hitSlop={10}
-          >
-            <Menu size={24} color="#111827" />
-          </Pressable>
-        ),
-
-        tabBarIcon: ({ color, size }) => {
-          if (route.name === ROUTES.HomeScreen) {
-            return <Home size={size} color={color} />;
-          }
-
-          if (route.name === ROUTES.ProductsStack) {
-            return <ShoppingBag size={size} color={color} />;
-          }
-
-          if (route.name === ROUTES.CartStack) {
-            return <ShoppingCart size={size} color={color} />;
-          }
-
-          if (route.name === ROUTES.ProfileScreen) {
-            return <User size={size} color={color} />;
-          }
-
-          return null;
-        },
-
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.iconsColor,
-      })}
-    >
+    <Tab.Navigator screenOptions={getScreenOptions}>
       <Tab.Screen
         name={ROUTES.HomeScreen}
         component={HomeScreen}
         options={{ title: 'Home' }}
       />
+
       <Tab.Screen
         name={ROUTES.ProductsStack}
         component={ProductsStack}
-        options={{
-          title: 'Products',
-        }}
+        options={{ title: 'Products' }}
       />
+
       <Tab.Screen
         name={ROUTES.CartStack}
         component={CartStack}
-        options={{
-          title: 'Cart',
-        }}
+        options={{ title: 'Cart' }}
       />
+
       <Tab.Screen
         name={ROUTES.ProfileScreen}
         component={ProfileScreen}

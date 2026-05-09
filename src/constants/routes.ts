@@ -8,6 +8,7 @@ export const ROUTES = {
   ContactsScreen: 'ContactsScreen',
   AboutUsScreen: 'AboutUsScreen',
   MainTabs: 'MainTabs',
+  CartTabs: 'CartTabs',
   ProductsStack: 'ProductsStack',
   CartStack: 'CartStack',
 } as const;

@@ -1,12 +1,55 @@
-import { View, StyleSheet, FlatList } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import { ProductCard, SearchBar } from '../components';
-import { useState } from 'react';
-import { PRODUCTS_DATA } from '../store/products';
+import { useCallback, useState } from 'react';
+import { useProducts } from '../hooks/useProducts';
+import { COLORS } from '../constants/mainStyles';
+import { SIZES } from '../constants/constants';
+import { Product } from '../api/apiProductsTypes';
 
 export const ProductsScreen = () => {
   const [search, setSearch] = useState('');
 
-  const filteredData = PRODUCTS_DATA.filter(item =>
+  const { products, loading, error, refetch } = useProducts();
+
+  const renderProductList = useCallback(
+    ({ item }: { item: Product }) => (
+      <ProductCard
+        id={item.id}
+        title={item.title}
+        price={item.price}
+        images={item.images ?? []}
+      />
+    ),
+    [],
+  );
+
+  if (loading) {
+    return (
+      <ActivityIndicator
+        size="large"
+        color={COLORS.primary}
+        style={styles.loader}
+      />
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.error}>
+          An error occurred while loading products.
+        </Text>
+      </View>
+    );
+  }
+
+  const filteredData = products.filter(item =>
     item.title.toLowerCase().includes(search.toLowerCase()),
   );
 
@@ -17,10 +60,11 @@ export const ProductsScreen = () => {
         data={filteredData}
         keyExtractor={item => item.id.toString()}
         numColumns={2}
-        columnWrapperStyle={styles.row}
         contentContainerStyle={styles.contentContainer}
-        renderItem={({ item }) => <ProductCard {...item} />}
+        renderItem={renderProductList}
         showsVerticalScrollIndicator={false}
+        onRefresh={refetch}
+        refreshing={loading}
       />
     </View>
   );
@@ -39,5 +83,16 @@ const styles = StyleSheet.create({
   row: {
     justifyContent: 'space-between',
     marginBottom: 16,
+  },
+  error: {
+    color: 'red',
+    fontSize: SIZES.xl,
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 8,
   },
+  placeholder: {
+    backgroundColor: '#9c89ac',
+  },
   infoAndBtn: {
     flexDirection: 'row',
     alignItems: 'center',

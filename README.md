@@ -1,10 +1,19 @@
+# Homework 6
+
 ![Homework 1 - Components](image.png)
 
-# ![Homework - 2 - Navigation, Tabs](image-1.png)
+# Homework 7
 
-![Homework - 2 - Navigation, Stack](image-2.png)
+- ![Homework - 2 - Navigation, Tabs](image-1.png)
+- ![Homework - 2 - Navigation, Stack](image-2.png)
+- ![Homework - 2 - Navigation, Drawer](image-3.png)
 
-![Homework - 2 - Navigation, Drawer](image-3.png)
+# Homework 8
+
+- ![Homework -3 - API - products](image-4.png)
+- ![Homework -3 - API - archive carts](image-5.png)
+
+=========================
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 

@@ -4,6 +4,6 @@ export interface ProductCardProps {
   id: number;
   title: string;
   price: number;
-  imageUrl: string;
+  images: string[];
   style?: ViewStyle;
 }
