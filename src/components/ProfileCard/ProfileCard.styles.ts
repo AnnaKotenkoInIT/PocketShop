@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
+    overflow: 'hidden',
     marginBottom: 16,
   },
   avatarFallback: {
@@ -22,6 +23,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
+  },
+  avatarFallbackDark: {
+    backgroundColor: '#d7c8e6',
   },
   avatarText: {
     color: COLORS.primary,
@@ -34,8 +38,10 @@ export const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     marginBottom: 6,
   },
+  nameDark: { color: COLORS.secondary },
   email: {
     fontSize: SIZES.s,
     color: COLORS.textRest,
   },
+  emailDark: { color: COLORS.secondary },
 });

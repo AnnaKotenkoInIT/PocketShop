@@ -11,6 +11,9 @@ import { TouchableOpacity } from 'react-native';
 import { ProductsStackParamList } from '../../navigator/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cart/cartSlice';
+
 export const ProductCard = ({
   id,
   title,
@@ -18,6 +21,8 @@ export const ProductCard = ({
   images,
   style,
 }: ProductCardProps) => {
+  const dispatch = useDispatch();
+
   const navigation =
     useNavigation<NativeStackNavigationProp<ProductsStackParamList>>();
 
@@ -25,6 +30,18 @@ export const ProductCard = ({
     navigation.navigate(ROUTES.ProductDetailsScreen, {
       productId: id,
     });
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: String(id),
+        title,
+        price,
+        image: images?.[0] ?? '',
+        brand: 'Unknown brand',
+      }),
+    );
   };
 
   const firstImage = images?.[0];
@@ -40,12 +57,18 @@ export const ProductCard = ({
 
         <FavouriteButton />
       </View>
+
       <View style={styles.infoAndBtn}>
         <View style={styles.info}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.price}>${Number(price).toFixed(2)}</Text>
         </View>
-        <IconButton Icon={Plus} color={COLORS.secondary} />
+
+        <IconButton
+          Icon={Plus}
+          color={COLORS.secondary}
+          onPress={handleAddToCart}
+        />
       </View>
     </TouchableOpacity>
   );
