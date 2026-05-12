@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/mainStyles';
+import { SIZES } from '../../constants/constants';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.backgroundGrey,
+    backgroundColor: '#f6e6ff',
     borderRadius: 18,
     padding: 18,
     marginTop: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: SIZES.xl,
     fontWeight: '700',
     color: COLORS.textPrimary,
     marginBottom: 18,
@@ -20,11 +21,11 @@ export const styles = StyleSheet.create({
     marginBottom: 12,
   },
   label: {
-    fontSize: 18,
+    fontSize: SIZES.m,
     color: COLORS.textSecondary,
   },
   value: {
-    fontSize: 18,
+    fontSize: SIZES.m,
     color: COLORS.textPrimary,
   },
   divider: {
@@ -33,12 +34,12 @@ export const styles = StyleSheet.create({
     marginVertical: 14,
   },
   totalLabel: {
-    fontSize: 22,
+    fontSize: SIZES.xl,
     fontWeight: '700',
     color: COLORS.textPrimary,
   },
   totalValue: {
-    fontSize: 22,
+    fontSize: SIZES.xl,
     fontWeight: '700',
     color: COLORS.textPrimary,
   },

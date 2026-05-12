@@ -33,6 +33,7 @@ export const CartItem = ({
             onPress={onDelete}
             size={22}
             color="#FF7A7A"
+            style={styles.deleteButton}
           />
         </View>
 

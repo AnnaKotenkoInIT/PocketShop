@@ -19,6 +19,7 @@
 ![Homework - 4 - useContext dark](image-7.png)
 ![Homework - 4 - useContext dark](image-8.png)
 ![Homework - 4 - useContext light](image-9.png)
+![Homework - 4 - Redux](image-10.png)
 
 =========================
 

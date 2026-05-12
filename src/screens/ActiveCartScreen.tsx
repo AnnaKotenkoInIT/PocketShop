@@ -12,6 +12,7 @@ import {
   decreaseQty,
   removeFromCart,
 } from '../store/cart/cartSlice';
+import { CustomButton } from '../components';
 
 export const ActiveCartScreen = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,12 @@ export const ActiveCartScreen = () => {
         discount={discount}
         total={total}
       />
+
+      <CustomButton
+        title="Checkout"
+        onPress={() => {}}
+        style={styles.checkoutButton}
+      />
     </View>
   );
 };
@@ -74,5 +81,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     textAlign: 'center',
+  },
+  checkoutButton: {
+    marginTop: 16,
+    marginBottom: 24,
   },
 });

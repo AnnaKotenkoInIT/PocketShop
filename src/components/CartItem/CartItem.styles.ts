@@ -4,64 +4,80 @@ import { COLORS } from '../../constants/mainStyles';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: COLORS.backgroundGrey,
-    borderRadius: 18,
-    padding: 12,
-    marginBottom: 14,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 10,
+    marginBottom: 12,
     alignItems: 'center',
   },
+
   image: {
-    width: 110,
-    height: 110,
-    borderRadius: 14,
-    marginRight: 14,
+    width: 80,
+    height: 80,
+    borderRadius: 12,
+    marginRight: 12,
   },
+
   infoContainer: {
     flex: 1,
     justifyContent: 'space-between',
-    height: '100%',
   },
+
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
+
   title: {
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: '700',
     color: COLORS.textPrimary,
+    maxWidth: 180,
   },
+
   brand: {
-    fontSize: 16,
+    fontSize: 13,
     color: COLORS.textSecondary,
-    marginTop: 4,
+    marginTop: 2,
   },
+
   price: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '700',
     color: COLORS.primary,
   },
+  deleteButton: {
+    backgroundColor: 'transparent',
+  },
+
   bottomRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 18,
+    marginTop: 12,
   },
+
   counterContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 8,
   },
+
   counterButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
     backgroundColor: COLORS.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   quantity: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
     color: COLORS.textPrimary,
+    minWidth: 24,
+    textAlign: 'center',
   },
 });

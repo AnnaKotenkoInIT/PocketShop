@@ -19,7 +19,7 @@ export const OrderSummary = ({
 
       <View style={styles.row}>
         <Text style={styles.label}>Subtotal</Text>
-        <Text style={styles.value}>${subtotal}</Text>
+        <Text style={styles.value}>${subtotal.toFixed(2)}</Text>
       </View>
 
       <View style={styles.row}>
@@ -31,7 +31,7 @@ export const OrderSummary = ({
 
       <View style={styles.row}>
         <Text style={styles.totalLabel}>Total</Text>
-        <Text style={styles.totalValue}>${total}</Text>
+        <Text style={styles.totalValue}>${total.toFixed(2)}</Text>
       </View>
     </View>
   );
