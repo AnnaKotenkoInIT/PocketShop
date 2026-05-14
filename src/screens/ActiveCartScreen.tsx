@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { MoveDown } from 'lucide-react-native';
 
@@ -11,12 +19,26 @@ import {
   increaseQty,
   decreaseQty,
   removeFromCart,
+  clearCart,
 } from '../store/cart/cartSlice';
 import { CustomButton } from '../components';
+
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
+const animateLayout = () => {
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+};
 
 export const ActiveCartScreen = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
+
+  const [isCheckingOut, setIsCheckingOut] = React.useState(false);
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -44,9 +66,18 @@ export const ActiveCartScreen = () => {
           <CartItem
             key={item.id}
             {...item}
-            onIncrease={() => dispatch(increaseQty(item.id))}
-            onDecrease={() => dispatch(decreaseQty(item.id))}
-            onDelete={() => dispatch(removeFromCart(item.id))}
+            onIncrease={() => {
+              animateLayout();
+              dispatch(increaseQty(item.id));
+            }}
+            onDecrease={() => {
+              animateLayout();
+              dispatch(decreaseQty(item.id));
+            }}
+            onDelete={() => {
+              animateLayout();
+              dispatch(removeFromCart(item.id));
+            }}
           />
         ))}
       </ScrollView>
@@ -58,11 +89,27 @@ export const ActiveCartScreen = () => {
         total={total}
       />
 
-      <CustomButton
-        title="Checkout"
-        onPress={() => {}}
-        style={styles.checkoutButton}
-      />
+      <View
+        style={[
+          styles.buttonWrapper,
+          isCheckingOut && styles.buttonWrapperActive,
+        ]}
+      >
+        <CustomButton
+          title={isCheckingOut ? 'Processing...' : 'Check Out'}
+          onPress={() => {
+            animateLayout();
+
+            setIsCheckingOut(true);
+
+            setTimeout(() => {
+              dispatch(clearCart());
+              setIsCheckingOut(false);
+            }, 300);
+          }}
+          style={styles.checkoutButton}
+        />
+      </View>
     </View>
   );
 };
@@ -85,5 +132,14 @@ const styles = StyleSheet.create({
   checkoutButton: {
     marginTop: 16,
     marginBottom: 24,
+  },
+
+  buttonWrapper: {
+    paddingVertical: 0,
+    opacity: 1,
+  },
+  buttonWrapperActive: {
+    paddingVertical: 12,
+    opacity: 0.6,
   },
 });

@@ -21,6 +21,10 @@
 ![Homework - 4 - useContext light](image-9.png)
 ![Homework - 4 - Redux](image-10.png)
 
+# Homework 11
+
+![Homework - 4 - Animation](image-11.png)
+
 =========================
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
