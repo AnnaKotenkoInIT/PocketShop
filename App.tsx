@@ -7,6 +7,16 @@ import { ThemeProvider } from './src/context/themeContext/ThemeContext';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 
+import React from 'react';
+
+if (__DEV__) {
+  const whyDidYouRender = require('@welldone-software/why-did-you-render');
+
+  whyDidYouRender(React, {
+    trackAllPureComponents: false,
+  });
+}
+
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 

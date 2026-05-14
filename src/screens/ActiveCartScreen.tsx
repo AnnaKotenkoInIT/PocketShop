@@ -14,6 +14,7 @@ import { MoveDown } from 'lucide-react-native';
 import { RootState } from '../store/store';
 import { CartItem } from '../components/CartItem/CartItem';
 import { OrderSummary } from '../components/OrderSummary/OrderSummary';
+import { CustomButton } from '../components';
 
 import {
   increaseQty,
@@ -21,7 +22,6 @@ import {
   removeFromCart,
   clearCart,
 } from '../store/cart/cartSlice';
-import { CustomButton } from '../components';
 
 if (
   Platform.OS === 'android' &&
@@ -40,13 +40,37 @@ export const ActiveCartScreen = () => {
 
   const [isCheckingOut, setIsCheckingOut] = React.useState(false);
 
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
+  const subtotal = React.useMemo(() => {
+    return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }, [items]);
 
   const discount = 0;
-  const total = subtotal - discount;
+
+  const total = React.useMemo(() => subtotal - discount, [subtotal]);
+
+  const handleIncrease = React.useCallback(
+    (id: string) => {
+      animateLayout();
+      dispatch(increaseQty(id));
+    },
+    [dispatch],
+  );
+
+  const handleDecrease = React.useCallback(
+    (id: string) => {
+      animateLayout();
+      dispatch(decreaseQty(id));
+    },
+    [dispatch],
+  );
+
+  const handleDelete = React.useCallback(
+    (id: string) => {
+      animateLayout();
+      dispatch(removeFromCart(id));
+    },
+    [dispatch],
+  );
 
   if (items.length === 0) {
     return (
@@ -66,18 +90,9 @@ export const ActiveCartScreen = () => {
           <CartItem
             key={item.id}
             {...item}
-            onIncrease={() => {
-              animateLayout();
-              dispatch(increaseQty(item.id));
-            }}
-            onDecrease={() => {
-              animateLayout();
-              dispatch(decreaseQty(item.id));
-            }}
-            onDelete={() => {
-              animateLayout();
-              dispatch(removeFromCart(item.id));
-            }}
+            onIncrease={() => handleIncrease(item.id)}
+            onDecrease={() => handleDecrease(item.id)}
+            onDelete={() => handleDelete(item.id)}
           />
         ))}
       </ScrollView>
@@ -89,27 +104,19 @@ export const ActiveCartScreen = () => {
         total={total}
       />
 
-      <View
-        style={[
-          styles.buttonWrapper,
-          isCheckingOut && styles.buttonWrapperActive,
-        ]}
-      >
-        <CustomButton
-          title={isCheckingOut ? 'Processing...' : 'Check Out'}
-          onPress={() => {
-            animateLayout();
+      <CustomButton
+        title={isCheckingOut ? 'Processing...' : 'Check Out'}
+        onPress={() => {
+          animateLayout();
+          setIsCheckingOut(true);
 
-            setIsCheckingOut(true);
-
-            setTimeout(() => {
-              dispatch(clearCart());
-              setIsCheckingOut(false);
-            }, 300);
-          }}
-          style={styles.checkoutButton}
-        />
-      </View>
+          setTimeout(() => {
+            dispatch(clearCart());
+            setIsCheckingOut(false);
+          }, 300);
+        }}
+        style={styles.checkoutButton}
+      />
     </View>
   );
 };
@@ -132,14 +139,5 @@ const styles = StyleSheet.create({
   checkoutButton: {
     marginTop: 16,
     marginBottom: 24,
-  },
-
-  buttonWrapper: {
-    paddingVertical: 0,
-    opacity: 1,
-  },
-  buttonWrapperActive: {
-    paddingVertical: 12,
-    opacity: 0.6,
   },
 });

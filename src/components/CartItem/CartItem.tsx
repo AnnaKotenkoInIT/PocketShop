@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { CartItemProps } from './CartItem.types';
 import { Minus, Plus, Trash2 } from 'lucide-react-native';
@@ -7,7 +8,7 @@ import { COLORS } from '../../constants/mainStyles';
 
 import { IconButton } from '../IconButton/IconButton';
 
-export const CartItem = ({
+const CartItemComponent = ({
   title,
   brand,
   price,
@@ -17,6 +18,8 @@ export const CartItem = ({
   onDecrease,
   onDelete,
 }: CartItemProps) => {
+  console.log('🔁 render CartItem:', title);
+
   return (
     <View style={styles.container}>
       <Image source={{ uri: image }} style={styles.image} />
@@ -66,3 +69,7 @@ export const CartItem = ({
     </View>
   );
 };
+
+CartItemComponent.whyDidYouRender = true;
+
+export const CartItem = React.memo(CartItemComponent);
