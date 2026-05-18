@@ -1,3 +1,75 @@
+# Final homework
+
+- Task 1 - Existing App Analysis 'PocketShop'
+
+PocketShop is a React Native shopping application that allows users to browse products, manage a cart, and place orders. The app includes product listing screens, cart functionality, quantity management, and theme support.
+
+Main User Scenarios:
+
+- Browsing available products
+- Adding and removing items from the cart
+- Changing product quantity
+- Viewing order summary and total price
+- Switching between light and dark themes
+
+Areas for Improvement:
+
+-Favorites (Saved Products): Add functionality for users to save and manage favorite products for quick access later.
+
+- Multi-Vendor Product Placement: Allow different users or sellers to publish and manage their own products inside the application. This would transform PocketShop into a marketplace-style platform with multiple vendors.
+- In-App Payment System: Integrate secure online payment methods so users can complete purchases directly inside the application without external services.
+- User Registration and Authentication: Implement user accounts with registration, login, and authentication features to personalize the experience and protect user data.
+- Delivery Tracking: Add shipment and delivery tracking functionality so users can monitor the status and location of their orders in real time.
+
+- Task 2 and 3 - Functionality Extension and UX/UI Improvements
+
+Added functionality: Favorites feature
+
+The application now includes a fully functional Favorites system. Users can mark products as favorites by tapping the heart icon on a product card. Selected items are stored in the global Redux state and displayed in the Favorites section on the Home screen.
+
+The Favorites feature allows users to:
+
+Add products to favorites with a single tap
+Remove products from favorites by toggling the same button
+View all saved favorite products in a separate list
+See an empty state message when no favorites are selected
+
+The UI also reflects the current favorite status of each product, providing immediate visual feedback when an item is added or removed from favorites.
+
+![Empty](image-14.png)
+![Favourites are selected ](image-15.png)
+
+- Task 4 - Documentation
+
+Now the application consists of three main screens:
+
+🏠 Home Screen
+The Home screen contains a promotional banner and a Favorites section.
+Users can quickly view their saved products and see an empty state when no favorites are selected.
+![Home](image-16.png)
+
+🛍 Products Screen
+The Products screen displays a list of products fetched from an external API.
+Users can browse items in a 2-column grid layout, search for specific products, and add them to the cart or favorites.
+![Products](image-17.png)
+
+🛒 Cart Screen
+The Cart screen allows users to manage selected products.
+Users can:
+-increase or decrease product quantity
+-remove items from the cart
+-view the total price of selected items
+-proceed with placing an order
+![Cart](image-10.png)
+Also the client can see the archive with orders, received from API.
+
+- ![Archive carts](image-5.png)
+
+Summary
+The application provides a simple e-commerce experience with product browsing, favorites management, and cart functionality, ensuring a smooth and intuitive user experience.
+
+=======================================================
+
 # Homework 6
 
 ![Homework 1 - Components](image.png)
@@ -26,7 +98,7 @@
 ![Homework - 5 - Animation, memo](image-11.png)
 ![Homework - 5 - Results](image-12.png)
 
-=========================
+=======================================================
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 

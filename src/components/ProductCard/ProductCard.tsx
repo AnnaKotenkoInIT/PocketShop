@@ -12,7 +12,11 @@ import { ProductsStackParamList } from '../../navigator/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectIsFavourite } from '../../store/favourites/favouritesSelectors';
 import { addToCart } from '../../store/cart/cartSlice';
+
+import { RootState } from '../../store/store';
 
 export const ProductCard = ({
   id,
@@ -44,6 +48,10 @@ export const ProductCard = ({
     );
   };
 
+  const isFavourite = useSelector((state: RootState) =>
+    selectIsFavourite(state, id),
+  );
+
   const firstImage = images?.[0];
 
   return (
@@ -55,7 +63,10 @@ export const ProductCard = ({
           <View style={[styles.cardImage, styles.placeholder]} />
         )}
 
-        <FavouriteButton />
+        <FavouriteButton
+          product={{ id, title, price, image: images?.[0] ?? '' }}
+          isActive={isFavourite}
+        />
       </View>
 
       <View style={styles.infoAndBtn}>

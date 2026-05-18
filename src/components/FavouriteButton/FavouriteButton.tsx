@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Heart } from 'lucide-react-native';
+import { useDispatch } from 'react-redux';
+import { toggleFavourite } from '../../store/favourites/favouritesSlice';
 import { FavouriteButtonProps } from './FavouriteButton.types';
 import { styles } from './FavouriteButton.styles';
 
 export const FavouriteButton = ({
-  initial = false,
-  onToggle,
+  product,
+  isActive,
 }: FavouriteButtonProps) => {
-  const [isFavourite, setIsFavourite] = useState(initial);
+  const dispatch = useDispatch();
 
   const handlePress = () => {
-    const newValue = !isFavourite;
-    setIsFavourite(newValue);
-    onToggle?.(newValue);
+    dispatch(toggleFavourite(product));
   };
 
   return (
@@ -24,8 +24,8 @@ export const FavouriteButton = ({
     >
       <Heart
         size={24}
-        color={isFavourite ? 'red' : '#fff'}
-        fill={isFavourite ? 'red' : 'transparent'}
+        color={isActive ? 'red' : '#fff'}
+        fill={isActive ? 'red' : 'transparent'}
       />
     </TouchableOpacity>
   );
